@@ -1,0 +1,300 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="100%">
+  <defs>
+    <filter id="glow-sm">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-md">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <radialGradient id="core-aura">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.55"/>
+      <stop offset="35%" stop-color="#0055bb" stop-opacity="0.18"/>
+      <stop offset="70%" stop-color="#001a44" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#000011" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="core-mid">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.75"/>
+      <stop offset="45%" stop-color="#0044aa" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000033" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="core-hot">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.97"/>
+      <stop offset="22%" stop-color="#00f0ff" stop-opacity="0.85"/>
+      <stop offset="65%" stop-color="#6633ff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="ring-cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#00f0ff" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="1"/>
+      <stop offset="75%" stop-color="#00f0ff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ring-violet" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#a855f7" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#a855f7" stop-opacity="0.8"/>
+      <stop offset="75%" stop-color="#a855f7" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ring-green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#00ff88" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#00ff88" stop-opacity="0.55"/>
+      <stop offset="75%" stop-color="#00ff88" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    /* === Core pulsations === */
+    @keyframes aura-breathe {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.9; }
+    }
+    @keyframes mid-breathe {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    @keyframes hot-breathe {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 1; }
+    }
+    @keyframes halo-pulse {
+      0%, 100% { opacity: 0.08; }
+      50% { opacity: 0.22; }
+    }
+
+    /* === Orbital rotations === */
+    @keyframes spin-cw {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spin-ccw {
+      to { transform: rotate(-360deg); }
+    }
+
+    /* === Dash flow on rings === */
+    @keyframes dash-flow {
+      to { stroke-dashoffset: -120; }
+    }
+    @keyframes dash-flow-rev {
+      to { stroke-dashoffset: 120; }
+    }
+
+    /* === Particle glow === */
+    @keyframes pt-glow {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    /* === Code float === */
+    @keyframes code-drift {
+      0%, 100% { opacity: 0; transform: translateY(14px); }
+      12% { opacity: 0.5; }
+      88% { opacity: 0.5; }
+      50% { transform: translateY(-14px); }
+    }
+
+    /* === Scanline sweep === */
+    @keyframes scan-sweep {
+      from { transform: translateY(-300px); }
+      to { transform: translateY(300px); }
+    }
+
+    /* === Hex float === */
+    @keyframes hex-hover {
+      0%, 100% { opacity: 0.1; transform: translateY(0) rotate(0deg); }
+      50% { opacity: 0.22; transform: translateY(-7px) rotate(18deg); }
+    }
+
+    /* === Data stream === */
+    @keyframes stream {
+      0% { stroke-dashoffset: 40; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    /* === Waveform === */
+    @keyframes wave-pulse {
+      0%, 100% { opacity: 0.12; }
+      50% { opacity: 0.35; }
+    }
+
+    /* === Crosshair === */
+    @keyframes cross-fade {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.4; }
+    }
+
+    /* --- Class assignments --- */
+    .core-aura   { animation: aura-breathe 4s ease-in-out infinite; }
+    .core-mid    { animation: mid-breathe 3s ease-in-out infinite 0.5s; }
+    .core-hot    { animation: hot-breathe 2s ease-in-out infinite 1s; }
+    .core-halo   { animation: halo-pulse 4.5s ease-in-out infinite; transform-origin: 400px 150px; }
+    .crosshair   { animation: cross-fade 3s ease-in-out infinite 0.8s; }
+
+    .orbit-a { animation: spin-cw  9s  linear infinite; transform-origin: 400px 150px; }
+    .orbit-b { animation: spin-ccw 14s linear infinite; transform-origin: 400px 150px; }
+    .orbit-c { animation: spin-cw  21s linear infinite; transform-origin: 400px 150px; }
+
+    .dash-a { stroke-dasharray: 14 26; animation: dash-flow     2.8s linear infinite; }
+    .dash-b { stroke-dasharray: 9  31; animation: dash-flow-rev 3.8s linear infinite; }
+    .dash-c { stroke-dasharray: 7  23; animation: dash-flow     5.2s linear infinite; }
+
+    .pt  { animation: pt-glow 2.2s ease-in-out infinite; }
+    .p0  { animation-delay: 0s;    } .p1  { animation-delay: 0.35s; }
+    .p2  { animation-delay: 0.7s;  } .p3  { animation-delay: 1.05s; }
+    .p4  { animation-delay: 1.4s;  } .p5  { animation-delay: 1.75s; }
+    .p6  { animation-delay: 0.5s;  } .p7  { animation-delay: 0.9s;  }
+    .p8  { animation-delay: 1.3s;  } .p9  { animation-delay: 1.6s;  }
+
+    .code   { font-family: 'Courier New', Consolas, monospace; animation: code-drift 7s ease-in-out infinite; }
+    .cy0    { animation-delay: 0s;   fill: #00f0ff; font-size: 10px; }
+    .cy1    { animation-delay: 1s;   fill: #a855f7; font-size: 9px;  }
+    .cy2    { animation-delay: 2s;   fill: #00ff88; font-size: 10px; }
+    .cy3    { animation-delay: 3s;   fill: #00f0ff; font-size: 9px;  }
+    .cy4    { animation-delay: 4s;   fill: #a855f7; font-size: 10px; }
+    .cy5    { animation-delay: 5s;   fill: #00ff88; font-size: 9px;  }
+    .cy6    { animation-delay: 1.5s; fill: #00f0ff; font-size: 8px;  }
+    .cy7    { animation-delay: 2.5s; fill: #a855f7; font-size: 9px;  }
+    .cy8    { animation-delay: 3.5s; fill: #00ff88; font-size: 8px;  }
+    .cy9    { animation-delay: 4.5s; fill: #00f0ff; font-size: 10px; }
+    .cy10   { animation-delay: 0.7s; fill: #a855f7; font-size: 8px;  }
+
+    .scanline { animation: scan-sweep 4.5s linear infinite; opacity: 0.035; }
+
+    .hex   { animation: hex-hover 7s ease-in-out infinite; }
+    .hx0   { animation-delay: 0s;   } .hx1 { animation-delay: 2.3s; }
+    .hx2   { animation-delay: 4.6s; }
+
+    .dstream { stroke-dasharray: 4 36; animation: stream 2s linear infinite; }
+    .wave    { animation: wave-pulse 3.5s ease-in-out infinite; }
+  </style>
+
+  <!-- ===================== BACKGROUND GRID ===================== -->
+  <g opacity="0.045" stroke="#00f0ff" stroke-width="0.5">
+    <line x1="100" y1="0" x2="100" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/>
+    <line x1="300" y1="0" x2="300" y2="300"/><line x1="400" y1="0" x2="400" y2="300"/>
+    <line x1="500" y1="0" x2="500" y2="300"/><line x1="600" y1="0" x2="600" y2="300"/>
+    <line x1="700" y1="0" x2="700" y2="300"/>
+    <line x1="0" y1="50" x2="800" y2="50"/><line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+  </g>
+
+  <!-- ===================== SCANLINE ===================== -->
+  <rect class="scanline" x="0" y="-300" width="800" height="1.5" fill="#00f0ff"/>
+
+  <!-- ===================== DATA STREAMS ===================== -->
+  <line class="dstream" x1="52"  y1="0" x2="52"  y2="300" stroke="#00f0ff" stroke-width="1"   opacity="0.1"/>
+  <line class="dstream" x1="748" y1="0" x2="748" y2="300" stroke="#a855f7" stroke-width="1"   opacity="0.1"  style="animation-delay:0.7s"/>
+  <line class="dstream" x1="188" y1="0" x2="188" y2="300" stroke="#00ff88" stroke-width="0.8" opacity="0.07" style="animation-delay:1.4s"/>
+  <line class="dstream" x1="612" y1="0" x2="612" y2="300" stroke="#00f0ff" stroke-width="0.8" opacity="0.07" style="animation-delay:0.3s"/>
+
+  <!-- ===================== HUD CORNERS ===================== -->
+  <g stroke="#00f0ff" stroke-width="1.2" fill="none" opacity="0.18" stroke-linecap="round">
+    <polyline points="18,38 18,18 38,18"/>
+    <polyline points="762,18 782,18 782,38"/>
+    <polyline points="18,262 18,282 38,282"/>
+    <polyline points="762,282 782,282 782,262"/>
+  </g>
+
+  <!-- ===================== FLOATING HEXAGONS ===================== -->
+  <polygon class="hex hx0" points="78,78 93,70 108,78 108,94 93,102 78,94" fill="none" stroke="#00f0ff" stroke-width="0.7"/>
+  <polygon class="hex hx1" points="688,198 703,190 718,198 718,214 703,222 688,214" fill="none" stroke="#a855f7" stroke-width="0.7"/>
+  <polygon class="hex hx2" points="148,218 160,212 172,218 172,230 160,236 148,230" fill="none" stroke="#00ff88" stroke-width="0.7"/>
+  <!-- Small diamonds -->
+  <rect class="hex hx1" x="662" y="62" width="7" height="7" rx="1" fill="none" stroke="#00f0ff" stroke-width="0.6" transform="rotate(45,665.5,65.5)"/>
+  <rect class="hex hx0" x="112" y="132" width="6" height="6" rx="1" fill="none" stroke="#a855f7" stroke-width="0.6" transform="rotate(45,115,135)"/>
+
+  <!-- ===================== CODE FRAGMENTS ===================== -->
+  <text class="code cy0"  x="58"  y="55">&lt;/&gt;</text>
+  <text class="code cy1"  x="698" y="78">const x =</text>
+  <text class="code cy2"  x="92"  y="248">{...spread}</text>
+  <text class="code cy3"  x="662" y="228">0xFF00</text>
+  <text class="code cy4"  x="28"  y="158">=&gt; {}</text>
+  <text class="code cy5"  x="722" y="148">async</text>
+  <text class="code cy6"  x="158" y="38">import</text>
+  <text class="code cy7"  x="592" y="38">.map()</text>
+  <text class="code cy8"  x="32"  y="272">npm run</text>
+  <text class="code cy9"  x="682" y="272">export {}</text>
+  <text class="code cy10" x="638" y="58">await</text>
+
+  <!-- ===================== ENERGY BEAMS ===================== -->
+  <g opacity="0.06">
+    <line x1="400" y1="150" x2="140" y2="48"  stroke="#00f0ff" stroke-width="0.5" class="dstream"/>
+    <line x1="400" y1="150" x2="660" y2="48"  stroke="#a855f7" stroke-width="0.5" class="dstream" style="animation-delay:0.5s"/>
+    <line x1="400" y1="150" x2="95"  y2="205" stroke="#00ff88" stroke-width="0.5" class="dstream" style="animation-delay:1s"/>
+    <line x1="400" y1="150" x2="705" y2="205" stroke="#00f0ff" stroke-width="0.5" class="dstream" style="animation-delay:1.5s"/>
+    <line x1="400" y1="150" x2="240" y2="278" stroke="#a855f7" stroke-width="0.5" class="dstream" style="animation-delay:0.3s"/>
+    <line x1="400" y1="150" x2="560" y2="278" stroke="#00ff88" stroke-width="0.5" class="dstream" style="animation-delay:0.8s"/>
+  </g>
+
+  <!-- ===================== ORBIT C — Back, Green, Largest ===================== -->
+  <g class="orbit-c">
+    <ellipse cx="400" cy="150" rx="210" ry="72" fill="none" stroke="url(#ring-green)" stroke-width="0.8" class="dash-c" transform="rotate(62,400,150)"/>
+    <circle cx="190" cy="150" r="2.2" fill="#00ff88" class="pt p0" filter="url(#glow-sm)"/>
+    <circle cx="610" cy="150" r="2.8" fill="#00ff88" class="pt p4" filter="url(#glow-sm)"/>
+  </g>
+
+  <!-- ===================== CORE AURA (Background Glow) ===================== -->
+  <circle class="core-aura" cx="400" cy="150" r="105" fill="url(#core-aura)"/>
+
+  <!-- ===================== CORE HALO RING ===================== -->
+  <circle class="core-halo" cx="400" cy="150" r="58" fill="none" stroke="#00f0ff" stroke-width="0.6"/>
+
+  <!-- ===================== ORBIT B — Middle, Violet ===================== -->
+  <g class="orbit-b">
+    <ellipse cx="400" cy="150" rx="158" ry="52" fill="none" stroke="url(#ring-violet)" stroke-width="1" class="dash-b" transform="rotate(-28,400,150)"/>
+    <circle cx="242" cy="150" r="2.5" fill="#a855f7" class="pt p1" filter="url(#glow-sm)"/>
+    <circle cx="558" cy="150" r="3.2" fill="#a855f7" class="pt p5" filter="url(#glow-sm)"/>
+    <circle cx="400" cy="98"  r="2"   fill="#a855f7" class="pt p7" filter="url(#glow-sm)"/>
+  </g>
+
+  <!-- ===================== CORE MID GLOW ===================== -->
+  <circle class="core-mid" cx="400" cy="150" r="44" fill="url(#core-mid)" filter="url(#glow-md)"/>
+
+  <!-- ===================== ORBIT A — Front, Cyan, Most Prominent ===================== -->
+  <g class="orbit-a">
+    <ellipse cx="400" cy="150" rx="118" ry="34" fill="none" stroke="url(#ring-cyan)" stroke-width="1.3" class="dash-a" transform="rotate(16,400,150)"/>
+    <circle cx="282" cy="150" r="3.2" fill="#00f0ff" class="pt p2" filter="url(#glow-sm)"/>
+    <circle cx="518" cy="150" r="2.8" fill="#00f0ff" class="pt p6" filter="url(#glow-sm)"/>
+    <circle cx="400" cy="116" r="2.2" fill="#00f0ff" class="pt p8" filter="url(#glow-sm)"/>
+  </g>
+
+  <!-- ===================== CORE HOT CENTER ===================== -->
+  <circle class="core-hot" cx="400" cy="150" r="20" fill="url(#core-hot)" filter="url(#glow-sm)"/>
+
+  <!-- ===================== CROSSHAIR ===================== -->
+  <g class="crosshair" stroke="#00f0ff" stroke-width="0.6" stroke-linecap="round">
+    <line x1="390" y1="150" x2="396" y2="150"/>
+    <line x1="404" y1="150" x2="410" y2="150"/>
+    <line x1="400" y1="140" x2="400" y2="146"/>
+    <line x1="400" y1="154" x2="400" y2="160"/>
+  </g>
+
+  <!-- ===================== WHITE-HOT CORE POINT ===================== -->
+  <circle cx="400" cy="150" r="5" fill="#ffffff" opacity="0.95"/>
+  <circle cx="400" cy="150" r="2.2" fill="#ffffff"/>
+
+  <!-- ===================== WAVEFORM ===================== -->
+  <polyline class="wave" fill="none" stroke="#00f0ff" stroke-width="0.8" opacity="0.18"
+    points="0,286 18,286 23,279 28,286 48,286 53,276 58,286 78,286 83,281 88,286 108,286 113,273 118,286 138,286 143,280 148,286 168,286 173,277 178,286 198,286 203,282 208,286 228,286 233,275 238,286 258,286 263,281 268,286 288,286 293,278 298,286 318,286 323,283 328,286 348,286 353,276 358,286 378,286 383,280 388,286 400,286 412,286 417,280 422,286 442,286 447,276 452,286 472,286 477,283 482,286 502,286 507,278 512,286 532,286 537,281 542,286 562,286 567,275 572,286 592,286 597,282 602,286 622,286 627,277 632,286 652,286 657,281 662,286 682,286 687,273 692,286 712,286 717,280 722,286 742,286 747,279 752,286 772,286 777,282 782,286 800,286"/>
+
+  <!-- ===================== AMBIENT SCATTERED PARTICLES ===================== -->
+  <circle cx="316" cy="86"  r="1"   fill="#00f0ff" class="pt p0"/>
+  <circle cx="484" cy="208" r="1.2" fill="#a855f7" class="pt p2"/>
+  <circle cx="342" cy="224" r="1"   fill="#00ff88" class="pt p4"/>
+  <circle cx="460" cy="76"  r="1.1" fill="#00f0ff" class="pt p1"/>
+  <circle cx="272" cy="170" r="0.8" fill="#a855f7" class="pt p3"/>
+  <circle cx="528" cy="116" r="1"   fill="#00ff88" class="pt p5"/>
+  <circle cx="228" cy="118" r="0.9" fill="#00f0ff" class="pt p6"/>
+  <circle cx="572" cy="182" r="1"   fill="#a855f7" class="pt p7"/>
+  <circle cx="338" cy="58"  r="0.7" fill="#00ff88" class="pt p8"/>
+  <circle cx="462" cy="242" r="0.8" fill="#00f0ff" class="pt p9"/>
+  <circle cx="200" cy="90"  r="0.6" fill="#a855f7" class="pt p3"/>
+  <circle cx="600" cy="85"  r="0.7" fill="#00ff88" class="pt p6"/>
+</svg>
