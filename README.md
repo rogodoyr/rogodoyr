@@ -20,7 +20,7 @@
 
 ### Databases
 <p>
-<img src="https://skillicons.dev/icons?i=mysql,posgresql,aws,azure,docker,gradle,postman" />
+<img src="https://skillicons.dev/icons?i=mysql,posgres,aws,azure,docker,gradle,postman" />
 </p>
 
 ### Tools & Platforms
