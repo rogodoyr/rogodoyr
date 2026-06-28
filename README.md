@@ -20,13 +20,13 @@
 
 ### Databases
 <p>
-<img src="https://skillicons.dev/icons?i=mysql,postgres,aws,azure,docker,gradle,postman" />
+<img src="https://skillicons.dev/icons?i=mysql,postgres,aws,azure,docker,gradle" />
 </p>
 
 ### Tools & Platforms
 
 <p>
-<img src="https://skillicons.dev/icons?i=git,github,vscode,vercel,idea,nodejs,npm" />
+<img src="https://skillicons.dev/icons?i=git,github,vscode,vercel,idea,nodejs,postman,npm" />
 </p>
 
 <p align="center">
