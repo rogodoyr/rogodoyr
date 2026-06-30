@@ -6,7 +6,7 @@
 ¡Bienvenido a mi espacio en GitHub! Soy estudiante de Ingeniería en Informática con un trasfondo profesional diverso que me ha brindado una gran capacidad de adaptación, resolución de problemas y visión estratégica. Actualmente enfocado en el desarrollo de software y la automatización de procesos.
 
 <p align="center">
-  <img src="separador.svg" width="100%" />
+  <img src="separador2.svg" width="100%" />
 </p>
 
 ### 🚀 Sobre mí
@@ -25,7 +25,7 @@
 
 Me apasiona construir soluciones eficientes, limpias y bien estructuradas, combinando la rigurosidad técnica con las mejores prácticas ágiles. ¡Siempre abierto a conectar y seguir aprendiendo!
 <p align="center">
-  <img src="separador.svg" width="100%" />
+  <img src="separador2.svg" width="100%" />
 </p>
 
 
@@ -57,7 +57,7 @@ Me apasiona construir soluciones eficientes, limpias y bien estructuradas, combi
 </p>
 
 <p align="center">
-  <img src="separador.svg" width="100%" />
+  <img src="separador2.svg" width="100%" />
 </p>
 
 
