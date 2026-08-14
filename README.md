@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="animacion.svg" width="100%" />
+  <img src="animacion2.svg" width="100%" />
 </p>
 ¡Hola! Soy Rodrigo Godoy 👋
 
